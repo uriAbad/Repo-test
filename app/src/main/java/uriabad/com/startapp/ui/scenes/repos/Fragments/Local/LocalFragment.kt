@@ -40,7 +40,6 @@ class LocalFragment: BaseFragment(), LocalFragmentView {
     }
 
     override fun onReposRetrieved(repos: List<RepoViewEntity>) {
-        swipe_layout.isRefreshing = false
         repoAdapter.items = ArrayList(repos)
     }
 
@@ -50,14 +49,17 @@ class LocalFragment: BaseFragment(), LocalFragmentView {
 
     override fun showLoader() { loader.visibility = VISIBLE }
 
-    override fun hideLoader() { loader.visibility = GONE }
+    override fun hideLoader() {
+        loader.visibility = GONE
+        swipe_layout.isRefreshing = false
+    }
 
     private fun removeRepoFromLocal(repo : RepoViewEntity, position: Int) {
         presenter.deleteRepo(repo, position)
     }
 
     override fun notifyRemovedSuccess(repo: RepoViewEntity, position: Int) {
-        notify("repo removed!")
+        notify(getString(R.string.repo_removed_message))
         with(repoAdapter) {
             items.remove(repo)
             notifyDataSetChanged()

@@ -41,7 +41,6 @@ class ExploreFragment: BaseFragment(), ExploreFragmentView {
     }
 
     override fun onReposRetrieved(repos: List<RepoViewEntity>) {
-        swipe_layout.isRefreshing = false
         repoAdapter.items = ArrayList(repos)
     }
 
@@ -49,15 +48,20 @@ class ExploreFragment: BaseFragment(), ExploreFragmentView {
         notify(errorMessage)
     }
 
-    override fun showLoader() { loader.visibility = VISIBLE }
+    override fun showLoader() {
+        loader.visibility = VISIBLE
+    }
 
-    override fun hideLoader() { loader.visibility = GONE }
+    override fun hideLoader() {
+        swipe_layout.isRefreshing = false
+        loader.visibility = GONE
+    }
 
     private fun addRepoToLocal(repo : RepoViewEntity) {
         presenter.storeRepo(repo)
     }
 
     override fun notifyStoredSuccess(repo: RepoViewEntity) {
-        notify("repo saved!")
+        notify(getString(R.string.repo_saved_message))
     }
 }

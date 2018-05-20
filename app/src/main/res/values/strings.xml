@@ -27,21 +27,11 @@
         your external resources</string>
     <string name="document_chooser_title">Select your document</string>
     <string name="logout">Logout</string>
-    <string name="nav_menu_albums">Albums</string>
-    <string name="nav_menu_explore">Explore</string>
-    <string name="nav_menu_featured">Featured</string>
-    <string name="nav_menu_account">My account</string>
-    <string name="nav_menu_albums_viewer">Albums viewer</string>
+
     <string name="logout_dialog_msg">Are you sure you want to logout ?</string>
-    <string name="albums_toolbar_title">Albums</string>
     <string name="option">Option</string>
     <string name="save">Save</string>
-    <string name="albums_empty_subtitle">No albums yet</string>
-    <string name="albums_empty_title">Ops!</string>
-    <string name="people">People</string>
-    <string name="account_toolbar_title">My account</string>
-    <string name="account_first_name">First name</string>
-    <string name="account_last_name">Last name</string>
-    <string name="account_email">Email</string>
-    <string name="toolbar_save_option">SAVE</string>
+
+    <string name="repo_removed_message">repo removed!</string>
+    <string name="repo_saved_message">repo saved!</string>
 </resources>
