@@ -3,8 +3,8 @@ package uriabad.com.startapp.dependencyinjection
 import uriabad.com.startapp.dependencyinjection.scope.PerActivity
 import uriabad.com.startapp.ui.scenes.albumDetail.AlbumDetailActivity
 import uriabad.com.startapp.ui.scenes.albumDetail.AlbumDetailModule
-import uriabad.com.startapp.ui.scenes.albums.AlbumsActivity
-import uriabad.com.startapp.ui.scenes.albums.AlbumsActivityModule
+import uriabad.com.startapp.ui.scenes.repos.RepoActivity
+import uriabad.com.startapp.ui.scenes.repos.RepoActivityModule
 import uriabad.com.startapp.ui.scenes.login.LoginActivity
 import uriabad.com.startapp.ui.scenes.login.LoginActivityModule
 import uriabad.com.startapp.ui.scenes.splash.SplashActivity
@@ -24,8 +24,8 @@ abstract class ActivityInjector {
     abstract fun contributeLoginInjector(): LoginActivity
 
     @PerActivity
-    @ContributesAndroidInjector(modules = arrayOf(AlbumsActivityModule::class))
-    abstract fun contributeAlbumsInjector(): AlbumsActivity
+    @ContributesAndroidInjector(modules = arrayOf(RepoActivityModule::class))
+    abstract fun contributeAlbumsInjector(): RepoActivity
 
     @PerActivity
     @ContributesAndroidInjector(modules = arrayOf(AlbumDetailModule::class))

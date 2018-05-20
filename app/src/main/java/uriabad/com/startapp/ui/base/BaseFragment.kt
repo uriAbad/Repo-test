@@ -2,15 +2,17 @@ package uriabad.com.startapp.ui.base
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import uriabad.com.startapp.ui.Navigator
-import uriabad.com.startapp.ui.utils.ExceptionUtils
 import com.evernote.android.state.StateSaver
 import dagger.android.support.AndroidSupportInjection
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.contentView
+import uriabad.com.startapp.ui.Navigator
+import uriabad.com.startapp.ui.utils.ExceptionUtils
 import javax.inject.Inject
 
 /**
@@ -59,4 +61,8 @@ abstract class BaseFragment : Fragment(), ErrorBaseView, LoadingBaseView, AnkoLo
             ExceptionUtils.showServerError(fragmentManager, "Error",
                     onBackPressed = { activity.onBackPressed() },
                     onRefreshPressed = { activity.recreate() } )
+
+    fun notify(message: String) = activity.contentView?.let {
+        Snackbar.make(it, message, Snackbar.LENGTH_SHORT).show()
+    }
 }

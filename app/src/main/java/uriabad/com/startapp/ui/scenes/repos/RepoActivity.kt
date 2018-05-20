@@ -1,33 +1,27 @@
-package uriabad.com.startapp.ui.scenes.albums;
+package uriabad.com.startapp.ui.scenes.repos;
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_albums.*
 import uriabad.com.startapp.R
-import uriabad.com.startapp.network.ApiConstants.Companion.DEFAULT_VISIBLE_POSITION
+import uriabad.com.startapp.ui.ViewPagerAdapter
 import uriabad.com.startapp.ui.base.BaseActivity
 import uriabad.com.startapp.ui.entities.AlbumViewEntity
-import uriabad.com.startapp.ui.scenes.albums.adapter.AlbumsAdapter
-import com.evernote.android.state.State
-import kotlinx.android.synthetic.main.activity_albums.*
+import uriabad.com.startapp.ui.scenes.repos.Fragments.Explore.ExploreFragment
+import uriabad.com.startapp.ui.scenes.repos.Fragments.Local.LocalFragment
 import javax.inject.Inject
 
 
-class AlbumsActivity : BaseActivity(), AlbumsView {
+class RepoActivity : BaseActivity(), RepoView {
 
-    @Inject lateinit var presenter: AlbumsPresenter
-    @State var allAlbums: ArrayList<AlbumViewEntity> = arrayListOf()
-    @State var lastAlbumVisiblePos: Int = DEFAULT_VISIBLE_POSITION
+    private val exploreFragment by lazy { ExploreFragment() }
+    private val localFragment by lazy { LocalFragment() }
 
-    private val albumsAdapter = AlbumsAdapter {
-        navigator.navigateToAlbumDetail(this, it)
-    }
+    @Inject lateinit var presenter: RepoPresenter
 
     companion object {
-        const val LIMIT_PER_PAGE = 0
-
         @JvmStatic fun getIntent(context: Context): Intent {
-            return Intent(context, AlbumsActivity::class.java)
+            return Intent(context, RepoActivity::class.java)
         }
     }
 
@@ -35,8 +29,17 @@ class AlbumsActivity : BaseActivity(), AlbumsView {
 
     override fun onViewLoaded() {
         setSupportActionBar(toolbar)
+        setUpTabLayout()
         setUpViews()
         loadData()
+    }
+
+    private fun setUpTabLayout() {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(exploreFragment, "Explore")
+        adapter.addFragment(localFragment, "Local")
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
     }
 
     override fun onResume() {
@@ -45,14 +48,14 @@ class AlbumsActivity : BaseActivity(), AlbumsView {
     }
 
     private fun setUpViews() {
-        swipe_layout.setOnRefreshListener {
+      //  swipe_layout.setOnRefreshListener {
+//
+  //      }
 
-        }
-
-        with(albums_recycler) {
-            layoutManager = LinearLayoutManager(this@AlbumsActivity)
-            adapter = albumsAdapter
-        }
+        ///with(albums_recycler) {
+           // layoutManager = LinearLayoutManager(this@RepoActivity)
+            //adapter = albumsAdapter
+        //}
 
     }
 
@@ -78,7 +81,7 @@ class AlbumsActivity : BaseActivity(), AlbumsView {
             add(AlbumViewEntity("id","title","type","image","duration","subtitle",true))
         }
 
-        albumsAdapter.items = albums
+       // albumsAdapter.items = albums
     }
 
     override fun showAlbums(newAlbums: List<AlbumViewEntity>) {

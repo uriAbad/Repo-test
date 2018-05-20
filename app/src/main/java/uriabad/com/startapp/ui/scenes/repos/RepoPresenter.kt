@@ -1,4 +1,4 @@
-package uriabad.com.startapp.ui.scenes.albums;
+package uriabad.com.startapp.ui.scenes.repos;
 
 import uriabad.com.startapp.interactor.AlbumsInteractor
 import uriabad.com.startapp.ui.base.BasePresenter
@@ -6,8 +6,8 @@ import uriabad.com.startapp.ui.entities.mappers.toAlbumViewEntity
 import javax.inject.Inject
 
 
-class AlbumsPresenter @Inject constructor(val view: AlbumsView,
-                                          private val getAlbumsInteractor: AlbumsInteractor)
+class RepoPresenter @Inject constructor(val view: RepoView,
+                                        private val getAlbumsInteractor: AlbumsInteractor)
     : BasePresenter() {
 
     fun onResume(params: HashMap<String, String>) = getAlbums(params)

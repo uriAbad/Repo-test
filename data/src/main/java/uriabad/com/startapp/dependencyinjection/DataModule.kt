@@ -1,6 +1,12 @@
 package uriabad.com.startapp.dependencyinjection
 
 
+import dagger.Module
+import dagger.Provides
+import dagger.multibindings.ElementsIntoSet
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import uriabad.com.startapp.dependencyinjection.qualifier.*
 import uriabad.com.startapp.network.ApiEndpoints
 import uriabad.com.startapp.network.interceptors.AuthenticationInterceptor
@@ -28,12 +34,10 @@ import uriabad.com.startapp.repository.query.Query
 import uriabad.com.startapp.repository.register.RegisterApiDataSource
 import uriabad.com.startapp.repository.register.RegisterDataRepository
 import uriabad.com.startapp.repository.register.queries.RegisterApiQuery
-import dagger.Module
-import dagger.Provides
-import dagger.multibindings.ElementsIntoSet
-import okhttp3.OkHttpClient
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import uriabad.com.startapp.repository.repositories.ApiRepoQuery
+import uriabad.com.startapp.repository.repositories.RepoApiDataSource
+import uriabad.com.startapp.repository.repositories.RepoDataRepository
+import uriabad.com.startapp.repository.repositories.RepoLocalApiDataSource
 import javax.inject.Singleton
 
 
@@ -196,4 +200,28 @@ class DataModule {
     fun providesAccountReadableDataSource(accountApiDataSource: AccountApiDataSource):
             ReadableDataSource<Unit, UserDataEntity> { return accountApiDataSource }
 
+    @Provides
+    @Singleton
+    @ElementsIntoSet
+    @RepoQueries
+    fun provideRepoApiQuery(repoQuery: ApiRepoQuery): MutableSet<Query> {
+        val set = LinkedHashSet<Query>()
+        set.add(repoQuery)
+        return set
+    }
+
+    @Provides
+    @Singleton
+    fun providesRepoDataRepository(repoDataRepository: RepoDataRepository)
+            : RepoRepository { return repoDataRepository }
+
+    @Provides
+    @Singleton
+    fun providesRepoReadableDataSource(repoApiDataSource: RepoApiDataSource):
+            ReadableDataSource<Long, RepoDataEntity> { return repoApiDataSource }
+
+    @Provides
+    @Singleton
+    fun providesRepodiskDataSource(repoDiskDataSource: RepoLocalApiDataSource):
+            CacheDataSource<Long, RepoDataEntity> { return repoDiskDataSource }
 }

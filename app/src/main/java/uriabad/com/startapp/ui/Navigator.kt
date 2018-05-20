@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import uriabad.com.startapp.ui.entities.AlbumViewEntity
 import uriabad.com.startapp.ui.scenes.albumDetail.AlbumDetailActivity
-import uriabad.com.startapp.ui.scenes.albums.AlbumsActivity
+import uriabad.com.startapp.ui.scenes.repos.RepoActivity
 import uriabad.com.startapp.ui.scenes.login.LoginActivity
 import javax.inject.Inject
 
@@ -29,8 +29,8 @@ class Navigator @Inject constructor() {
     }
 
     fun navigateToAlbums(context: Context, clearTask: Boolean) {
-        if (context !is AlbumsActivity) {
-            val intent = AlbumsActivity.getIntent(context)
+        if (context !is RepoActivity) {
+            val intent = RepoActivity.getIntent(context)
             if (clearTask) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

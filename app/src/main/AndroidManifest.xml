@@ -31,7 +31,7 @@
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden|adjustPan"/>
 
-        <activity android:name="uriabad.com.startapp.ui.scenes.albums.AlbumsActivity" />
+        <activity android:name="uriabad.com.startapp.ui.scenes.repos.RepoActivity" />
 
         <activity android:name="uriabad.com.startapp.ui.scenes.albumDetail.AlbumDetailActivity"
             android:theme="@style/ActivityTheme"/>
