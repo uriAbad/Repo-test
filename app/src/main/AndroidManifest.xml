@@ -29,6 +29,9 @@
         <activity android:name="uriabad.com.startapp.ui.scenes.repos.RepoActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name="uriabad.com.startapp.ui.scenes.repoDetail.RepoDetailActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

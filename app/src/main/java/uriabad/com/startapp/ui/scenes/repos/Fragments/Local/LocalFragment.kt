@@ -16,9 +16,9 @@ class LocalFragment: BaseFragment(), LocalFragmentView {
 
     @Inject lateinit var presenter: LocalFragmentPresenter
     override var layout: Int = R.layout.fragment_repo
-    private val repoAdapter = RepoAdapter("Remove") { repo, position ->
-        removeRepoFromLocal(repo, position)
-    }
+    private val repoAdapter = RepoAdapter("Remove",
+            buttonListener = { repo, position -> removeRepoFromLocal(repo, position) },
+            clickListener = { repo, _ -> navigator.toRepoDetail(context, repo)})
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -16,7 +16,10 @@ class ExploreFragment: BaseFragment(), ExploreFragmentView {
 
     @Inject lateinit var presenter: ExploreFragmentPresenter
     override var layout: Int = R.layout.fragment_repo
-    private val repoAdapter = RepoAdapter("add") { repo, _ -> addRepoToLocal(repo) }
+    private val repoAdapter = RepoAdapter("add",
+            buttonListener = { repo, _ -> addRepoToLocal(repo) },
+            clickListener = { repo, _ -> navigator.toRepoDetail(context, repo)}
+    )
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

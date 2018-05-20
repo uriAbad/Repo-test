@@ -19,9 +19,8 @@ class RepoActivity : BaseActivity(), RepoView {
     @Inject lateinit var presenter: RepoPresenter
 
     companion object {
-        @JvmStatic fun getIntent(context: Context): Intent {
-            return Intent(context, RepoActivity::class.java)
-        }
+        @JvmStatic fun getIntent(context: Context): Intent =
+            Intent(context, RepoActivity::class.java)
     }
 
     override var layout = R.layout.activity_repo

@@ -8,7 +8,9 @@ import uriabad.com.startapp.R
 import uriabad.com.startapp.ui.entities.RepoViewEntity
 import uriabad.com.startapp.ui.utils.extensions.inflate
 
-class RepoAdapter(private val buttonText: String, private val clickListener: (RepoViewEntity, Int) -> Unit)
+class RepoAdapter(private val buttonText: String,
+                  private val clickListener: (RepoViewEntity, Int) -> Unit,
+                  private val buttonListener: (RepoViewEntity, Int) -> Unit)
     : RecyclerView.Adapter<RepoAdapter.RepoViewHolder>() {
 
     var items = ArrayList<RepoViewEntity>()
@@ -23,15 +25,18 @@ class RepoAdapter(private val buttonText: String, private val clickListener: (Re
     override fun getItemCount() = items.count()
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) =
-            holder.bind(items[position],buttonText, clickListener)
+            holder.bind(items[position],buttonText, clickListener, buttonListener)
 
     class RepoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(repo: RepoViewEntity,buttonText: String, clickListener: (RepoViewEntity, Int) -> Unit) = with(repo) {
+        fun bind(repo: RepoViewEntity,buttonText: String,
+                 clickListener: (RepoViewEntity, Int) -> Unit,
+                 buttonListener: (RepoViewEntity, Int) -> Unit) = with(repo) {
             itemView.repo_name.text = name
             itemView.repo_author.text = description
             itemView.action_button.text = buttonText
-            itemView.action_button.setOnClickListener { clickListener(this, adapterPosition) }
+            itemView.setOnClickListener { clickListener(this, adapterPosition) }
+            itemView.action_button.setOnClickListener { buttonListener(this, adapterPosition) }
         }
     }
 }
