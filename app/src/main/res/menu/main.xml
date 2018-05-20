@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_albums"
+        android:icon="@drawable/ic_menu_gallery"
+        android:fontFamily="@font/font_family_gotham"
+        android:title="@string/nav_menu_albums"/>
+    <item
+        android:id="@+id/nav_explore"
+        android:icon="@drawable/ic_menu_gallery"
+        android:fontFamily="@font/font_family_gotham"
+        android:title="@string/nav_menu_explore" />
+    <item
+        android:id="@+id/nav_people"
+        android:fontFamily="@font/font_family_gotham"
+        android:icon="@drawable/ic_menu_send"
+        android:title="@string/people" />
+    <item
+        android:id="@+id/nav_featured"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:fontFamily="@font/font_family_gotham"
+        android:title="@string/nav_menu_featured" />
+    <item
+        android:id="@+id/nav_albums_viewer"
+        android:icon="@drawable/ic_menu_slideshow"
+        android:fontFamily="@font/font_family_gotham"
+        android:title="@string/nav_menu_albums_viewer" />
+</menu>
