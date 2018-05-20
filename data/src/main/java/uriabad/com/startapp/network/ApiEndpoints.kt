@@ -7,14 +7,5 @@ interface ApiEndpoints {
 
 
         const val PERSONAL_TOKEN = "6e4cfd52c5bed2f34544d0c2ff50967c6ad374f7"
-        const val LOGIN = "user/login"
-        const val USER = "user"
-        const val ALBUMS = "albums"
-        const val ALBUM = "album"
-        const val EXPLORE = "explore/"
-        const val ARTISTS = EXPLORE + "artists"
-        const val COMPOSERS = EXPLORE + "composers"
-        const val MOODS = EXPLORE + "moods"
-        const val FEATURED = "featured"
     }
 }

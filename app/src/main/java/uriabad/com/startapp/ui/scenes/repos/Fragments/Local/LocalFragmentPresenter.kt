@@ -21,7 +21,6 @@ class LocalFragmentPresenter @Inject constructor(
             }
             it.failure {
                 view.hideLoader()
-                view.onError(it.message ?: "Unknown error")
             }
         }
     }

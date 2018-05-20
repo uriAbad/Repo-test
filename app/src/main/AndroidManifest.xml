@@ -26,15 +26,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="uriabad.com.startapp.ui.scenes.login.LoginActivity"
-                  android:theme="@style/ActivityTheme"
-                  android:screenOrientation="portrait"
-                  android:windowSoftInputMode="stateHidden|adjustPan"/>
-
-        <activity android:name="uriabad.com.startapp.ui.scenes.repos.RepoActivity" />
-
-        <activity android:name="uriabad.com.startapp.ui.scenes.albumDetail.AlbumDetailActivity"
-            android:theme="@style/ActivityTheme"/>
+        <activity android:name="uriabad.com.startapp.ui.scenes.repos.RepoActivity"
+            android:screenOrientation="portrait" />
 
     </application>
 

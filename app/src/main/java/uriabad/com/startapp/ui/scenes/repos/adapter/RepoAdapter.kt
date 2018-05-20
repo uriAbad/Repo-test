@@ -29,6 +29,7 @@ class RepoAdapter(private val buttonText: String, private val clickListener: (Re
 
         fun bind(repo: RepoViewEntity,buttonText: String, clickListener: (RepoViewEntity, Int) -> Unit) = with(repo) {
             itemView.repo_name.text = name
+            itemView.repo_author.text = description
             itemView.action_button.text = buttonText
             itemView.action_button.setOnClickListener { clickListener(this, adapterPosition) }
         }

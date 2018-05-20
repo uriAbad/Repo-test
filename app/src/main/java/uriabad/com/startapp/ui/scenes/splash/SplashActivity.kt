@@ -14,22 +14,10 @@ class SplashActivity: BaseActivity(), SplashView {
 
     @Inject lateinit var presenter: SplashPresenter
     override var layout = R.layout.activity_splash
-    override fun onViewLoaded() {}
-
-    override fun onResume() {
-        super.onResume()
-        presenter.isUserStored()
+    override fun onViewLoaded() {
+        navigator.toRepos(this,true)
     }
 
-    override fun onUserLogged(userID: String, token: String) {
-        userDetails.userID = userID
-        userDetails.token = token
-        handler.postDelayed({navigator.navigateToAlbums(this, true)}, SPLASH_DELAY_MS)
-    }
-
-    override fun onUserNotLogged() {
-        handler.postDelayed({navigator.navigateToLogin(this)}, SPLASH_DELAY_MS)
-    }
 
     override fun showUnauthorizedException() {}
 
